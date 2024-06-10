@@ -29,5 +29,16 @@ namespace Demo_ci_cd.Controllers
             })
             .ToArray();
         }
+        [HttpGet("V2")]
+        public IEnumerable<WeatherForecast> GetV2()
+        {
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+                TemperatureC = Random.Shared.Next(-20, 55),
+                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+            })
+            .ToArray();
+        }
     }
 }
